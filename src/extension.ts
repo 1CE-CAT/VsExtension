@@ -1,15 +1,31 @@
 import * as vscode from 'vscode';
+import markdownItContainer from 'markdown-it-container';
 
 export function activate(context: vscode.ExtensionContext) {
+  return {
+    extendMarkdownIt(md: any) {
+      // Alert blocks
+      md.use(markdownItContainer, 'alert', {
+        validate: () => true,
+        render: (tokens: any, idx: number) => {
+          return tokens[idx].nesting === 1 ? '<div class="alert">' : '</div>';
+        }
+      });
 
-	console.log('Congratulations, your extension "helloworld" is now active!');
+      // Spoiler blocks
+      md.use(markdownItContainer, 'spoiler', {
+        marker: '?',
+        validate: () => true,
+        render: (tokens: any, idx: number) => {
+          // Логика для скрытия/раскрытия
+          return tokens[idx].nesting === 1 ? 
+            '<div class="spoiler"><details><summary>' : 
+            '</summary></details></div>';
+        }
+      });
 
-	const disposable = vscode.commands.registerCommand('helloworld.helloWorld', () => {
-		
-		vscode.window.showInformationMessage('Hello World from MarkDownSBEx!');
-	});
-
-	context.subscriptions.push(disposable);
+      return md;
+    }
+  };
 }
-
 export function deactivate() {}
