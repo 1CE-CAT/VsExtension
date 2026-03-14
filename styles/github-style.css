@@ -1,0 +1,52 @@
+body {
+    background-color: #f6f8fa;
+}
+
+h1 {
+    color: #0366d6;
+    border-bottom: 2px;
+}
+
+pre:hover {
+    background-color: #ffffff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+blockquote{
+    color: #6a737d;
+    background-color: #ffffff;
+    border-left: 4px solid #dfe2e5;
+}
+
+.alert{
+    border-left: 2px;
+    border-color: brown;
+    border-radius: 2px;
+    background: var(--vscode-editor-background);
+}
+
+.spoiler{
+    border-radius: 6px;
+    background-color: var(--vscode-editor-background);
+    border: 1px solid var(--vscode-panel-border);
+    overflow: hidden;
+}
+
+.spoiler details {
+    padding: 8px 12px;
+}
+
+.spoiler summary {
+    cursor: pointer;
+    color: var(--vscode-textLink-foreground);
+    font-weight: 500;
+    padding: 4px 0;
+}
+
+.spoiler summary:hover {
+    color: var(--vscode-textLink-activeForeground);
+}
+
+.spoiler[open] {
+    background: var(--vscode-editor-inactiveSelectionBackground);
+}
