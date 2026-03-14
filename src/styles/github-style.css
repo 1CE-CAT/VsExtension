@@ -1,0 +1,19 @@
+body {
+    background-color: #f6f8fa;
+}
+
+h1 {
+    color: #0366d6;
+    border-bottom: 2px;
+}
+
+pre:hover {
+    background-color: #ffffff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+blockquote{
+    color: #6a737d;
+    background-color: #ffffff;
+    border-left: 4px solid #dfe2e5;
+}
