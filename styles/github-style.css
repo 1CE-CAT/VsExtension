@@ -4,32 +4,50 @@ body {
 
 h1 {
     color: #0366d6;
-    border-bottom: 2px;
+    text-decoration: underline;
+}
+
+pre code {
+    color:#ffffff;
+    margin: 5px;
+}
+
+pre{
+    transition: all 0.4s ease;
 }
 
 pre:hover {
-    background-color: #ffffff;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    background: var(--vscode-editor-background);
+    box-shadow: 0 8px 12px rgba(3, 102, 214, 1);
+    transition: all 0.4s ease;
+    color: rgb(75, 168, 248);
 }
 
 blockquote{
-    color: #6a737d;
-    background-color: #ffffff;
+    color: rgb(75, 168, 248);
     border-left: 4px solid #dfe2e5;
+    border-color: #0366d6;
+    background-color: gray;
+    margin: 5px;
 }
 
-.alert{
-    border-left: 2px;
-    border-color: brown;
-    border-radius: 2px;
-    background: var(--vscode-editor-background);
+.alert{ 
+    background-color: var(--vscode-editor-background);
+    border-left: 5px solid red;
+    color: red;
+    margin: 5px;
+    padding: 0 8px 0 2px;
+    border-radius: 5px;
 }
 
 .spoiler{
     border-radius: 6px;
     background-color: var(--vscode-editor-background);
-    border: 1px solid var(--vscode-panel-border);
+    border: 2px solid rgb(209, 140, 0);
     overflow: hidden;
+    margin: 5px;
+    color: rgb(210, 206, 200);
+    padding: 0 8px 0 8px;
 }
 
 .spoiler details {
@@ -38,17 +56,12 @@ blockquote{
 
 .spoiler summary {
     cursor: pointer;
-    color: var(--vscode-textLink-foreground);
     font-weight: 500;
     padding: 4px 0;
 }
 
 .spoiler summary:hover {
     color: var(--vscode-textLink-activeForeground);
-}
-
-.spoiler[open] {
-    background: var(--vscode-editor-inactiveSelectionBackground);
 }
 
 @keyframes fadeIn {

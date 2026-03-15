@@ -2,7 +2,7 @@
   "name": "helloworld",
   "displayName": "MarkDownSBEx",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -13,8 +13,12 @@
   "main": "./out/extension.js",
   "contributes": {
     "markdown.markdownItPlugins": true,
-    "markdown.previewStyles": ["./styles/github-style.css"],
-    "markdown.previewScripts": ["./scripts/preview.js"],
+    "markdown.previewStyles": [
+      "./styles/github-style.css"
+    ],
+    "markdown.previewScripts": [
+      "./scripts/preview.js"
+    ],
     "commands": [
       {
         "command": "helloworld.helloWorld",
@@ -31,6 +35,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@types/markdown-it-container": "^4.0.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "@types/vscode": "^1.110.0",
@@ -41,6 +46,9 @@
     "typescript-eslint": "^8.56.1"
   },
   "dependencies": {
-    "markdown-it-container": "^4.0.0"
+    "@types/markdown-it-emoji": "^3.0.1",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-emoji": "^3.0.0",
+    "mermaid": "^11.13.0"
   }
 }

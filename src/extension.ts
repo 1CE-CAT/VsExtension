@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import markdownItContainer from 'markdown-it-container';
+import { full as emoji } from 'markdown-it-emoji'
 
 export function activate(context: vscode.ExtensionContext) {
   return {
@@ -17,13 +18,16 @@ export function activate(context: vscode.ExtensionContext) {
         marker: '?',
         validate: () => true,
         render: (tokens: any, idx: number) => {
-          // Логика для скрытия/раскрытия
-          return tokens[idx].nesting === 1 ? 
-            '<div class="spoiler"><details><summary>' : 
-            '</summary></details></div>';
+          if (tokens[idx].nesting === 1) {
+            const title = tokens[idx].info.trim().replace(/^spoiler\s+/, '') || 'Спойлер';
+            return `<details class="spoiler"><summary>${title}</summary>\n`;
+          } else {
+            return '</details>\n';
+          }
         }
       });
-
+      
+      md.use(emoji);
       return md;
     }
   };
