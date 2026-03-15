@@ -2,7 +2,7 @@
   "name": "helloworld",
   "displayName": "MarkDownSBEx",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -17,7 +17,9 @@
       "./styles/github-style.css"
     ],
     "markdown.previewScripts": [
-      "./scripts/preview.js"
+      "./scripts/preview.js",
+      "./scripts/mermaid-init.js",
+      "./scripts/mermaid.min.js"
     ],
     "commands": [
       {
@@ -49,6 +51,7 @@
     "@types/markdown-it-emoji": "^3.0.1",
     "markdown-it-container": "^4.0.0",
     "markdown-it-emoji": "^3.0.0",
+    "markdown-it-mermaid": "^0.2.5",
     "mermaid": "^11.13.0"
   }
 }

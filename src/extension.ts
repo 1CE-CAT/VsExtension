@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
 import markdownItContainer from 'markdown-it-container';
-import { full as emoji } from 'markdown-it-emoji'
+import { full as emoji } from 'markdown-it-emoji';
 
 export function activate(context: vscode.ExtensionContext) {
   return {
     extendMarkdownIt(md: any) {
-      // Alert blocks
+      // Alert-блоки
       md.use(markdownItContainer, 'alert', {
         validate: () => true,
         render: (tokens: any, idx: number) => {
@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
       });
 
-      // Spoiler blocks
+      // Spoiler-блоки
       md.use(markdownItContainer, 'spoiler', {
         marker: '?',
         validate: () => true,
@@ -26,10 +26,28 @@ export function activate(context: vscode.ExtensionContext) {
           }
         }
       });
-      
+
       md.use(emoji);
+
+      const originalFence = md.renderer.rules.fence;
+      md.renderer.rules.fence = (tokens: any, idx: number, options: any, env: any, self: any) => {
+        const token = tokens[idx];
+        const lang = token.info.trim();
+
+        if (lang === 'mermaid') {
+          return `<div class="mermaid">${token.content}</div>`;
+        }
+
+        if (originalFence) {
+          return originalFence(tokens, idx, options, env, self);
+        } else {
+          return self.renderToken(tokens, idx, options, env, self);
+        }
+      };
+
       return md;
     }
   };
 }
+
 export function deactivate() {}
