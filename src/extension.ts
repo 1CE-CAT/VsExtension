@@ -13,17 +13,15 @@ export function activate(context: vscode.ExtensionContext) {
         }
       });
 
-      // Spoiler-блоки
+      // Spoiler blocks
       md.use(markdownItContainer, 'spoiler', {
         marker: '?',
         validate: () => true,
         render: (tokens: any, idx: number) => {
-          if (tokens[idx].nesting === 1) {
-            const title = tokens[idx].info.trim().replace(/^spoiler\s+/, '') || 'Спойлер';
-            return `<details class="spoiler"><summary>${title}</summary>\n`;
-          } else {
-            return '</details>\n';
-          }
+          // Логика для скрытия/раскрытия
+          return tokens[idx].nesting === 1 ? 
+            '<div class="spoiler"><details><summary>' : 
+            '</summary></details></div>';
         }
       });
 
