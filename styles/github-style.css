@@ -43,7 +43,7 @@ blockquote{
 .spoiler{
     border-radius: 6px;
     background-color: rgb(24, 26, 27);
-    border: 2px solid rgb(209, 140, 0);
+    border: 2px solid #0366d6;
     overflow: hidden;
     margin: 5px;
     color: rgb(210, 206, 200);
@@ -67,10 +67,6 @@ blockquote{
 .spoiler details summary > * {
   display: none;
 }
-.spoiler details[open] summary > * {
-  display: block;
-  animation: fadeIn 0.5s ease-out;
-}
 
 @keyframes fadeIn {
     from {
@@ -83,3 +79,7 @@ blockquote{
     }
 }
 
+.spoiler details[open] summary > * {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
